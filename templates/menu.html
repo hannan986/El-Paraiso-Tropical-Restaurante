@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Menu — El Paraiso Tropical Restaurante</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="logo-icon">🌴</span>
+        <div class="logo-text">
+          <span class="logo-main">El Paraiso</span>
+          <span class="logo-sub">Tropical Restaurante</span>
+        </div>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/#about" class="nav-link">About</a></li>
+        <li><a href="/menu" class="nav-link" style="color:var(--accent)">Menu</a></li>
+        <li><a href="/#specials" class="nav-link">Specials</a></li>
+        <li><a href="/#reservations" class="nav-link">Reservations</a></li>
+        <li><a href="/#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="/#reservations" class="btn btn-nav">Reserve a Table</a>
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <div class="mp-banner">
+    <span class="mp-banner-label">Bienvenidos</span>
+    <h1 class="mp-banner-title">Our <em>Menu</em></h1>
+    <p class="mp-banner-desc">28 dishes crafted from authentic Caribbean &amp; Latin American recipes — made fresh every single day.</p>
+    <div class="mp-banner-badges">
+      <div class="badge"><span>🌿</span> Locally Sourced</div>
+      <div class="badge"><span>👨‍🍳</span> Made Fresh Daily</div>
+      <div class="badge"><span>🌱</span> Vegan Options</div>
+      <div class="badge"><span>🚫🌾</span> Gluten-Free Options</div>
+    </div>
+  </div>
+
+  <!-- Filters & Search bar -->
+  <div class="mp-controls">
+    <div class="mp-controls-inner">
+      <div class="mp-search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="mpSearch" placeholder="Search dishes…" />
+      </div>
+      <div class="mp-filters">
+        <button class="mp-filter-btn active" data-filter="all">All</button>
+        <button class="mp-filter-btn" data-filter="popular">⭐ Popular</button>
+        <button class="mp-filter-btn" data-filter="vegan">🌱 Vegan</button>
+        <button class="mp-filter-btn" data-filter="gluten-free">🚫🌾 Gluten-Free</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layout: Sidebar + Content -->
+  <div class="mp-layout">
+
+    <!-- Sidebar -->
+    <aside class="mp-sidebar">
+      <div class="mp-sidebar-header">Browse by Category</div>
+      <nav class="mp-sidebar-nav">
+        <a href="#starters"    class="mp-sidebar-link"><span class="sidebar-icon">🥘</span> Starters</a>
+        <a href="#salads"      class="mp-sidebar-link"><span class="sidebar-icon">🥗</span> Salads</a>
+        <a href="#main-dishes" class="mp-sidebar-link"><span class="sidebar-icon">🍽️</span> Main Dishes</a>
+        <a href="#sides"       class="mp-sidebar-link"><span class="sidebar-icon">🌽</span> Sides</a>
+        <a href="#desserts"    class="mp-sidebar-link"><span class="sidebar-icon">🍮</span> Desserts</a>
+        <a href="#drinks"      class="mp-sidebar-link"><span class="sidebar-icon">🍹</span> Drinks</a>
+      </nav>
+    </aside>
+
+    <!-- Main content (injected by JS) -->
+    <div class="mp-content" id="mpContent"></div>
+
+  </div>
+
+  <!-- Reservation CTA -->
+  <div class="mp-cta-strip">
+    <h2>Ready to Dine In?</h2>
+    <p>Reserve your table and enjoy the full El Paraiso experience.</p>
+    <a href="/#reservations" class="btn btn-primary">Reserve a Table</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span>🌴</span>
+            <div>
+              <strong>El Paraiso</strong>
+              <small>Tropical Restaurante</small>
+            </div>
+          </div>
+          <p class="footer-tagline">"Where every meal is a journey to paradise."</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">Our Story</a></li>
+            <li><a href="/menu">Full Menu</a></li>
+            <li><a href="/#specials">Weekly Specials</a></li>
+            <li><a href="/#reservations">Reservations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+13055550192">(305) 555-0192</a></li>
+            <li><a href="mailto:hello@elparaisotropical.com">hello@elparaisotropical.com</a></li>
+            <li><a href="#">2847 Coconut Grove Blvd, Miami, FL</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hours</h4>
+          <ul class="hours-list">
+            <li><span>Mon – Thu</span><span>11am – 10pm</span></li>
+            <li><span>Fri – Sat</span><span>11am – 11pm</span></li>
+            <li><span>Sunday</span><span>12pm – 9pm</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2024 El Paraiso Tropical Restaurante. All rights reserved.</p>
+        <p>Made with ❤️ in Miami, FL</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/js/menu.js"></script>
+</body>
+</html>

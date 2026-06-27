@@ -20,6 +20,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/menu')
+def menu():
+    return render_template('menu.html')
+
+
 @app.route('/api/menu', methods=['GET'])
 def get_menu():
     category = request.args.get('category')
