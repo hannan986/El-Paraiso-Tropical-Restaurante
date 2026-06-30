@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, send_from_directory
 from flask_cors import CORS
 import json
 import os
@@ -23,6 +23,11 @@ def index():
 @app.route('/menu')
 def menu():
     return render_template('menu.html')
+
+
+@app.route('/images/<path:filename>')
+def serve_image(filename):
+    return send_from_directory(os.path.join(BASE_DIR, 'images'), filename)
 
 
 @app.route('/api/menu', methods=['GET'])
