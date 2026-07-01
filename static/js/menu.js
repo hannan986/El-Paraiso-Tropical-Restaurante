@@ -72,7 +72,17 @@ window.addEventListener('scroll', () => {
 const navToggle = document.getElementById('navToggle');
 const navLinks  = document.getElementById('navLinks');
 navToggle && navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+  const isOpen = navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', isOpen);
+});
+
+document.addEventListener('click', (e) => {
+  const nb = document.getElementById('navbar');
+  if (nb && !nb.contains(e.target) && navLinks.classList.contains('open')) {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+  }
 });
 
 /* =============================================

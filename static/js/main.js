@@ -69,18 +69,26 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  const isOpen = navLinks.classList.contains('open');
+  const isOpen = navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open', isOpen);
   navToggle.setAttribute('aria-expanded', isOpen);
-  navToggle.style.transform = isOpen ? 'rotate(90deg)' : '';
 });
 
 // Close mobile menu when a link is clicked
 navLinks.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
     navLinks.classList.remove('open');
-    navToggle.style.transform = '';
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
   });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!navbar.contains(e.target) && navLinks.classList.contains('open')) {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+  }
 });
 
 /* =============================================
@@ -250,7 +258,8 @@ function initTestimonials() {
 
   function goToCard(index) {
     currentCard = Math.max(0, Math.min(index, cards.length - 1));
-    const cardWidth = cards[0].offsetWidth + 24;
+    const gap = 24;
+    const cardWidth = cards[0].offsetWidth + gap;
     track.style.transform = `translateX(-${currentCard * cardWidth}px)`;
     dotsWrap.querySelectorAll('.testi-dot').forEach((d, i) => {
       d.classList.toggle('active', i === currentCard);
@@ -260,6 +269,14 @@ function initTestimonials() {
   prevBtn && prevBtn.addEventListener('click', () => goToCard(currentCard - 1));
   nextBtn && nextBtn.addEventListener('click', () => goToCard(currentCard + 1));
 
+  // Touch/swipe support
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend',   e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goToCard(diff > 0 ? currentCard + 1 : currentCard - 1);
+  }, { passive: true });
+
   // Auto-advance
   let autoTimer = setInterval(() => goToCard((currentCard + 1) % cards.length), 5000);
   track.parentElement.addEventListener('mouseenter', () => clearInterval(autoTimer));
@@ -268,7 +285,11 @@ function initTestimonials() {
   });
 
   // Recalculate on resize
-  window.addEventListener('resize', () => goToCard(currentCard), { passive: true });
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => goToCard(currentCard), 150);
+  }, { passive: true });
 }
 
 /* =============================================
